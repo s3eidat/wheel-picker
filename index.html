@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Wheel Picker — Free Spin the Wheel Random Name Picker | S3eidat Tools</title>
+<meta name="description" content="Spin a colourful wheel to pick a random name or option. Fair results from your browser's cryptographic random generator, winner confetti, remove-winner mode, saved lists and fullscreen. Free and private.">
+<meta property="og:title" content="Wheel Picker — spin the wheel to pick a random name">
+<meta property="og:description" content="A fair spinning wheel for names and choices. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="wheel-picker">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Wheel Picker</h1>
+    <p>Type some names, spin the wheel, and let chance decide. Every result is fair: it comes from your browser's cryptographic random generator.</p>
+  </section>
+
+  <div class="wp-grid">
+    <section class="card wheel-card" id="wheelCard">
+      <div class="wheel-wrap" id="wheelWrap">
+        <canvas id="wheel" tabindex="0" aria-label="Wheel. Press Enter or Space to spin"></canvas>
+        <div class="pointer" aria-hidden="true"></div>
+        <button class="hub" id="spin" aria-label="Spin the wheel">SPIN</button>
+      </div>
+      <p class="center result" id="result" aria-live="polite">&nbsp;</p>
+      <div class="row center-row no-print">
+        <button class="btn primary big" id="spin2"><svg class="i"><use href="#i-refresh"/></svg>Spin</button>
+        <button class="btn" id="fs">⛶ Fullscreen</button>
+      </div>
+      <div class="row center-row mt no-print">
+        <label class="check"><input type="checkbox" id="removeWinner"> Remove the winner after each spin</label>
+        <label class="check"><input type="checkbox" id="sound" checked> Tick sound</label>
+      </div>
+    </section>
+
+    <div class="stack">
+      <section class="card">
+        <div class="row between">
+          <h2>Entries <small id="count"></small></h2>
+          <div class="row">
+            <button class="btn ghost small" id="shuffle">Shuffle</button>
+            <button class="btn ghost small" id="sort">Sort</button>
+            <button class="btn ghost small" id="clear">Clear</button>
+          </div>
+        </div>
+        <label class="sr" for="names">Entries, one per line</label>
+        <textarea class="textarea prose" id="names" dir="auto" placeholder="One name or option per line"></textarea>
+        <p class="faint">One entry per line. Repeat an entry to give it more chances.</p>
+      </section>
+
+      <section class="card">
+        <h2>Saved lists</h2>
+        <form class="row" id="saveForm">
+          <label class="grow"><span class="sr">List name</span><input class="input" id="listName" maxlength="60" placeholder="Name this list, e.g. Class 7B" dir="auto"></label>
+          <button class="btn" type="submit">Save list</button>
+        </form>
+        <div class="row mt" id="lists"></div>
+      </section>
+
+      <section class="card">
+        <div class="row between"><h2>Winners</h2><button class="btn ghost small" id="clearHist">Clear</button></div>
+        <ol class="hist" id="hist"></ol>
+        <p class="faint" id="noHist">Spin to see the winners here.</p>
+      </section>
+    </div>
+  </div>
+</main>
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+<script src="app.js"></script>
+</body>
+</html>
